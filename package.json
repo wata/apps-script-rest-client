@@ -1,0 +1,25 @@
+{
+  "name": "apps-script-rest-client",
+  "version": "1.0.0",
+  "description": "A lightweight REST client optimized for use with TypeScript with generics.",
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.10",
+    "@wnagasawa/apps-script-rest-client": "0.0.2"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.3.0"
+  },
+  "scripts": {
+    "types:publish": "npm publish @wnagasawa/apps-script-rest-client --access=public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wata/apps-script-rest-client.git"
+  },
+  "author": "Wataru Nagasawa <me@wata.dev>",
+  "bugs": {
+    "url": "https://github.com/wata/apps-script-rest-client/issues"
+  },
+  "homepage": "https://github.com/wata/apps-script-rest-client#readme"
+}

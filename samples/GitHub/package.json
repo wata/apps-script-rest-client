@@ -1,0 +1,12 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.10",
+    "@wnagasawa/apps-script-rest-client": "0.0.2"
+  },
+  "devDependencies": {
+    "@types/google-apps-script-oauth2": "^24.0.2"
+  }
+}

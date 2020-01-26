@@ -1,0 +1,21 @@
+{
+  "name": "@wnagasawa/apps-script-rest-client",
+  "version": "0.0.2",
+  "description": "Typescript definitions for RestClient",
+  "dependencies": {
+    "@types/google-apps-script": "*"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wata/apps-script-rest-client.git"
+  },
+  "author": "Wataru Nagasawa <me@wata.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wata/apps-script-rest-client/issues"
+  },
+  "homepage": "https://github.com/wata/apps-script-rest-client#readme",
+  "types": "./index.d.ts"
+}
