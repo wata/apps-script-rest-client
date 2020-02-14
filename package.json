@@ -4,7 +4,7 @@
   "description": "A lightweight REST client optimized for use with TypeScript with generics.",
   "dependencies": {
     "@types/google-apps-script": "^1.0.10",
-    "@wnagasawa/apps-script-rest-client": "0.0.2"
+    "@wnagasawa/apps-script-rest-client": "0.0.3"
   },
   "devDependencies": {
     "@google/clasp": "^2.3.0"

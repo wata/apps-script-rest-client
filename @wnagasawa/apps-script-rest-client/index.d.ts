@@ -8,21 +8,21 @@ declare namespace RestClient {
     value: T;
   } | {
     ok: false;
-    error: ResponseError;
+    error: Error;
   };
 
   interface IResponse<T> {
     readonly statusCode: number;
-    readonly result: T;
+    readonly object: T;
     readonly headers: object;
   }
 
   class ResponseError implements Error {
-    statusCode: number;
-    result: object;
-    message: string;
-    name: string;
-    constructor(statusCode: number, result: object, message: string);
+    readonly statusCode: number;
+    readonly object: object;
+    readonly message: string;
+    readonly name: string;
+    constructor(statusCode: number, object: object, message: string);
     toString(): string;
   }
 
@@ -32,6 +32,7 @@ declare namespace RestClient {
     constructor(baseURL: string, method: 'get' | 'delete' | 'patch' | 'post' | 'put', path: string, queryParameters?: {
       [key: string]: any;
     }, payload?: object, options?: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions);
+    intercept(object: any, httpResponse: GoogleAppsScript.URL_Fetch.HTTPResponse): Error | null;
     response(httpResponse: GoogleAppsScript.URL_Fetch.HTTPResponse): Result<IResponse<T>>;
   }
 }

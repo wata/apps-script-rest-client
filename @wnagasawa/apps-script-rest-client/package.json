@@ -1,6 +1,6 @@
 {
   "name": "@wnagasawa/apps-script-rest-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Typescript definitions for RestClient",
   "dependencies": {
     "@types/google-apps-script": "*"

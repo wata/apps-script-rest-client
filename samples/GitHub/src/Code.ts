@@ -1,12 +1,20 @@
-import { GitHubAPI } from './GitHubAPI'
+import { GitHubAPI, GitHubError } from './GitHubAPI'
 
 function run() {
   const request = new GitHubAPI.SearchRepositoriesRequest('typescript')
   const result = RestClient.send(request)
   if (!result.ok) {
-    Logger.log(JSON.stringify(result.error))
+    handleError(result.error)
     return
   }
-  const response = result.value
-  Logger.log(JSON.stringify(response))
+  const response = result.value.object
+  console.log(response)
+}
+
+function handleError(error: Error) {
+  if (error instanceof GitHubError) {
+    console.error(error.message) // Prints message from GitHub API
+    return
+  }
+  console.error(error)
 }

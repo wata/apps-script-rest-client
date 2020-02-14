@@ -80,7 +80,9 @@ function run() {
     console.log(result.error)
     return
   }
-  const response = result.value
+  const response = result.value.object
   console.log(response)
 }
 ```
+
+See the [GitHub sample](https://github.com/wata/apps-script-rest-client/tree/master/samples/GitHub) for the complete code.

@@ -3,6 +3,7 @@
   "dependencies": {
     "libraries": [
       {
+        "developmentMode": true,
         "userSymbol": "RestClient",
         "libraryId": "1mvxMPd7MWgOeQmOzovVgU3yXcSlnPZ74tz1tjxNI-zMs4wO_xcm5aTJq",
         "version": "1"
@@ -12,5 +13,6 @@
   "exceptionLogging": "STACKDRIVER",
   "oauthScopes": [
     "https://www.googleapis.com/auth/script.external_request"
-  ]
+  ],
+  "runtimeVersion": "V8"
 }

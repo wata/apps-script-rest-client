@@ -1,11 +1,11 @@
 type Result<T> =
   | { ok: true, value: T }
-  | { ok: false, error: ResponseError }
+  | { ok: false, error: Error }
 
 class ResponseError implements Error {
-  public name = 'ResponseError'
+  public readonly name = 'ResponseError'
 
-  constructor(public statusCode: number, public result: object, public message: string) { }
+  constructor(public readonly statusCode: number, public readonly object: any, public readonly message: string) { }
 
   public toString() {
     return `${this.name}: ${this.message}`
@@ -14,7 +14,7 @@ class ResponseError implements Error {
 
 interface IResponse<T> {
   readonly statusCode: number
-  readonly result: T
+  readonly object: T
   readonly headers: object
 }
 
@@ -41,21 +41,31 @@ abstract class Request<T> {
     )
   }
 
+  public intercept(object: any, httpResponse: GoogleAppsScript.URL_Fetch.HTTPResponse): Error | null {
+    const statusCode = httpResponse.getResponseCode()
+    if (statusCode >= 200 && statusCode < 300) {
+      return null
+    }
+    return new ResponseError(
+      statusCode,
+      object,
+      `Unacceptable status code ${statusCode}\n${JSON.stringify(this, null, 2)}\n${JSON.stringify(object, null, 2)}`
+    )
+  }
+
   public response(httpResponse: GoogleAppsScript.URL_Fetch.HTTPResponse): Result<IResponse<T>> {
+    const contents = httpResponse.getContentText()
+    const parsedObject = contents.length > 0 ? JSON.parse(contents) : {}
+    const error = this.intercept(parsedObject, httpResponse)
+    if (error) {
+      return { ok: false, error }
+    }
     const response = {
       statusCode: httpResponse.getResponseCode(),
-      result: JSON.parse(httpResponse.getContentText()),
+      object: parsedObject,
       headers: httpResponse.getAllHeaders(),
     }
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      return { ok: true, value: response }
-    }
-    const error = new ResponseError(
-      response.statusCode,
-      response.result,
-      `Unacceptable status code ${response.statusCode}\n${JSON.stringify(this, null, 2)}\n${JSON.stringify(response.result, null, 2)}`,
-    )
-    return { ok: false, error }
+    return { ok: true, value: response }
   }
 }
 
