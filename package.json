@@ -1,6 +1,6 @@
 {
   "name": "apps-script-rest-client",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A lightweight REST client optimized for use with TypeScript with generics.",
   "dependencies": {
     "@types/google-apps-script": "^1.0.10",
