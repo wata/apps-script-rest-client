@@ -7,7 +7,7 @@
     "@wnagasawa/apps-script-rest-client": "0.0.3"
   },
   "devDependencies": {
-    "@google/clasp": "^2.3.0"
+    "@google/clasp": "^2.4.2"
   },
   "scripts": {
     "types:publish": "npm publish @wnagasawa/apps-script-rest-client --access=public",
