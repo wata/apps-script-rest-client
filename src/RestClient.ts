@@ -56,9 +56,9 @@ abstract class Request<T> {
   public response(httpResponse: GoogleAppsScript.URL_Fetch.HTTPResponse): Result<IResponse<T>> {
     const contents = httpResponse.getContentText()
     const parsedObject = contents.length > 0 ? JSON.parse(contents) : {}
-    const error = this.intercept(parsedObject, httpResponse)
+    const interceptedError = this.intercept(parsedObject, httpResponse)
     if (error) {
-      return { ok: false, error }
+      return { ok: false, error: interceptedError }
     }
     const response = {
       statusCode: httpResponse.getResponseCode(),
