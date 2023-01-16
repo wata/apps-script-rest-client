@@ -57,7 +57,7 @@ abstract class Request<T> {
     const contents = httpResponse.getContentText()
     const parsedObject = contents.length > 0 ? JSON.parse(contents) : {}
     const interceptedError = this.intercept(parsedObject, httpResponse)
-    if (error) {
+    if (interceptedError) {
       return { ok: false, error: interceptedError }
     }
     const response = {
